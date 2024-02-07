@@ -12,9 +12,16 @@
   "dependencies": {
     "@ant-design/icons-react-native": "^2.3.2",
     "@ant-design/react-native": "^5.0.5",
+    "@react-native-camera-roll/camera-roll": "^7.4.0",
+    "@react-native-community/segmented-control": "^2.2.2",
+    "@react-native-community/slider": "^4.5.0",
+    "@react-native-picker/picker": "^2.6.1",
+    "@react-native-segmented-control/segmented-control": "^2.5.0",
     "axios": "^1.6.7",
     "react": "18.2.0",
-    "react-native": "0.73.3"
+    "react-native": "0.73.3",
+    "react-native-gesture-handler": "^2.15.0",
+    "react-native-vector-icons": "^10.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
@@ -27,6 +34,7 @@
     "@redux-devtools/extension": "^3.3.0",
     "@reduxjs/toolkit": "^2.1.0",
     "@types/react": "^18.2.6",
+    "@types/react-native-vector-icons": "^6.4.18",
     "@types/react-test-renderer": "^18.0.0",
     "@types/redux-logger": "^3.0.13",
     "babel-jest": "^29.6.3",
