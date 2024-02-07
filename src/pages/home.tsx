@@ -6,53 +6,39 @@
  */
 
 import React from 'react';
-import {
-	Button,
-	SafeAreaView,
-	ScrollView,
-	StatusBar,
-	Text,
-	useColorScheme,
-	View,
-} from 'react-native';
-
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {SafeAreaView} from 'react-native';
 import {useAppDispatch, useAppSelector} from '../redux/hooks';
-import {increment} from '../redux/slices/counterSlice';
+import {SearchBar} from '@ant-design/react-native';
+import {
+	clearSearchInput,
+	setSearchInput,
+} from '../redux/slices/searchInputSlice';
 
 function Home(): React.JSX.Element {
-	const isDarkMode = useColorScheme() === 'dark';
-
-	const counterState = useAppSelector(state => state.counter.value);
+	const searchInputState = useAppSelector(state => state.search.value);
 
 	const dispatch = useAppDispatch();
 
-	const backgroundStyle = {
-		backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+	const onInputChange = (value: string) => {
+		dispatch(setSearchInput(value));
+	};
+
+	const onInputSubmit = () => {
+		console.log('submit');
+		dispatch(clearSearchInput());
 	};
 
 	return (
-		<SafeAreaView style={backgroundStyle}>
-			<StatusBar
-				barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-				backgroundColor={backgroundStyle.backgroundColor}
+		<SafeAreaView>
+			<SearchBar
+				value={searchInputState}
+				placeholder="Search Places"
+				cancelText="Submit"
+				onSubmit={onInputSubmit}
+				onCancel={onInputSubmit}
+				onChange={onInputChange}
+				showCancelButton
 			/>
-			<ScrollView
-				contentInsetAdjustmentBehavior="automatic"
-				style={backgroundStyle}>
-				<View
-					style={{
-						backgroundColor: isDarkMode
-							? Colors.black
-							: Colors.white,
-					}}>
-					<Text>The counter state is {counterState}</Text>
-					<Button
-						title="test button"
-						onPress={() => dispatch(increment())}
-					/>
-				</View>
-			</ScrollView>
 		</SafeAreaView>
 	);
 }
